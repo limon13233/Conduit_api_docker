@@ -1,0 +1,33 @@
+name: conduit_api
+version: '0.1.0'
+services:
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - '.:/app'
+    networks:
+      - my_network
+    depends_on:
+      - postgres_api
+    environment:
+      DB_HOST: postgres_api
+      DB_PORT: 5432
+      DB_USERNAME: postgres
+      DB_PASSWORD: 1
+      DB_NAME: financialAccounting
+      SECRET_KEY: SECRET_KEY
+  postgres_api:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1
+      POSTGRES_DB: financialAccounting
+    ports:
+      - 5432:5432
+    networks:
+      - my_network
+
+networks:
+  my_network:

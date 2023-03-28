@@ -1,0 +1,11 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "conduit_api",
+            "request": "launch",
+            "type": "dart",
+            "program": "bin/conduit_api.dart",
+        }
+    ]
+}
